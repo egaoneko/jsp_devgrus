@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - devgrus@localhost" uuid="f91211d4-45c2-4cd2-aa12-fa5910eacf13">
+    <database-info product="MySQL" version="5.6.13" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="devgrus"/>
+    <table name="portfolio_article" schema="" catalog="devgrus" type="TABLE">
+      <column name="article_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sequence_no" sqlType="CHAR" precision="16" scale="0" nullable="false" jdbcType="1"/>
+      <column name="posting_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="read_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="writer_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="comment_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="article_id"/>
+      <exported-key name="portfolio_comment_ibfk_1" table="portfolio_comment" schema="" catalog="devgrus" columns="article_id"/>
+      <index name="sequence_no" unique="false" columns="sequence_no"/>
+    </table>
+    <table name="portfolio_comment" schema="" catalog="devgrus" type="TABLE">
+      <column name="comment_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sequence_no" sqlType="CHAR" precision="16" scale="0" nullable="false" jdbcType="1"/>
+      <column name="posting_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="writer_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="article_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="comment_id"/>
+      <foreign-key name="portfolio_comment_ibfk_1" columns="article_id" ref-table="portfolio_article" ref-schema="" ref-catalog="devgrus" ref-columns="article_id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="sequence_no" unique="false" columns="sequence_no"/>
+    </table>
+    <table name="portfolio_id_sequence" schema="" catalog="devgrus" type="TABLE">
+      <column name="sequence_name" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="next_value" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="sequence_name"/>
+    </table>
+  </data-source>
+</component>

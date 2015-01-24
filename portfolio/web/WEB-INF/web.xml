@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!-- DBCPInit 서블릿 -->
+    <servlet>
+        <servlet-name>DBCPInit</servlet-name>
+        <servlet-class>jdbc.loader.DBCPInit</servlet-class>
+        <init-param>
+            <param-name>jdbcdriver</param-name>
+            <param-value>com.mysql.jdbc.Driver</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- MVC : URI 컨트롤러 서블릿 -->
+    <servlet>
+        <servlet-name>URIController</servlet-name>
+        <servlet-class>net.devgrus.controller.URIController</servlet-class>
+        <init-param>
+            <param-name>propertyConfig</param-name>
+            <param-value>/WEB-INF/URIProperty.properties</param-value>
+        </init-param>
+    </servlet>
+
+    <!-- MVC : URI 컨트롤러 URI pattern -->
+    <servlet-mapping>
+        <servlet-name>URIController</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Sitemesh 필터 등록 -->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>
+            com.opensymphony.sitemesh.webapp.SiteMeshFilter
+        </filter-class>
+    </filter>
+
+    <!-- Sitemesh URI pattern -->
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 로그인 필터 등록 -->
+    <filter>
+        <filter-name>LoginCheck</filter-name>
+        <filter-class>filter.LoginCheckFilter</filter-class>
+    </filter>
+
+    <!-- 로그인 필터 URI pattern -->
+    <filter-mapping>
+        <filter-name>LoginCheck</filter-name>
+        <url-pattern>/board/write.do</url-pattern>
+        <url-pattern>/board/writeForm.do</url-pattern>
+        <url-pattern>/board/update.do</url-pattern>
+        <url-pattern>/board/updateForm.do</url-pattern>
+        <url-pattern>/board/reply.do</url-pattern>
+        <url-pattern>/board/replyForm.do</url-pattern>
+        <url-pattern>/board/delete.do</url-pattern>
+        <url-pattern>/board/deleteForm.do</url-pattern>
+    </filter-mapping>
+
+</web-app>

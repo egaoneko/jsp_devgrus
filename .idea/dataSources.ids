@@ -35,6 +35,13 @@
       <foreign-key name="portfolio_comment_ibfk_1" columns="article_id" ref-table="portfolio_article" ref-schema="" ref-catalog="devgrus" ref-columns="article_id" update-rule="3" delete-rule="0" deferrability="2"/>
       <index name="sequence_no" unique="false" columns="sequence_no"/>
     </table>
+    <table name="portfolio_guestbook" schema="" catalog="devgrus" type="TABLE">
+      <column name="guestbook_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="guest_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="message" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="guestbook_id"/>
+    </table>
     <table name="portfolio_id_sequence" schema="" catalog="devgrus" type="TABLE">
       <column name="sequence_name" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <column name="next_value" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>

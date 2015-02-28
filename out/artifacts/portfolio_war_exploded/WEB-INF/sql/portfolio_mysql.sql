@@ -41,3 +41,11 @@ create table portfolio_comment(
 	index (sequence_no),
 	foreign key(article_id) references portfolio_article(article_id) on delete cascade
 );
+
+create table portfolio_guestbook (
+    message_id int not null auto_increment,
+    guest_name varchar(50) not null,
+    password varchar(10) not null,
+    message text not null,
+    primary key (message_id)
+);
